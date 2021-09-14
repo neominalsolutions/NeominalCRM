@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "neominalsolutions-189313": {
+      "hosting": {
+        "NeominalCrm": [
+          "neominalsolutions-189313"
+        ]
+      }
+    }
+  }
+}
