@@ -11,12 +11,15 @@ export class FirebaseUploaderService {
   
   onUploadPercentage = new BehaviorSubject<any>(null);
   onDownloadLink = new BehaviorSubject<any>(null);
+  onFileName = new BehaviorSubject<any>(null);
 
   constructor(private storage: AngularFireStorage) {}
 
   uploadFile(event:any) {
     const file = event.target.files[0];
     console.log('file', file);
+
+    this.onFileName.next(file.name);
 
     const filePath = `/uploads/${file.name}` ;
     const fileRef = this.storage.ref(filePath);

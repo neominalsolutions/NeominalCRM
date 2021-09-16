@@ -1,18 +1,26 @@
+<div class="file-upload-container">
 
-<input type="file" class="file-input"
-       (change)="uploadFile($event)" #fileUpload>
+  <input [hidden]="true" type="file" class="file-input" (change)="uploadFile($event)" #fileUpload>
 
-<div class="file-upload">
+  <div class="file-upload">
 
-   {{uploadPercent || "No file uploaded yet."}}
+    <ng-template #uploadedFileTemp>
+      {{fileName}}
+    </ng-template>
 
-    <button mat-mini-fab color="primary" class="upload-btn"
-      (click)="fileUpload.click()">
-        <mat-icon>attach_file</mat-icon>
+    <ng-template #noFileTemplate>
+      No file uploaded yet.
+    </ng-template>
+
+    <span *ngIf="uploadPercent == null;then noFileTemplate else uploadedFileTemp;"></span>
+
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <mat-icon>file_upload</mat-icon>
     </button>
-</div>
-
-<div>
-    <div>{{ uploadPercent | async }}</div>
-    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+    &nbsp;
+    <a *ngIf="downloadURL" [href]="downloadURL | async" mat-mini-fab color="primary" class="upload-btn">
+      <mat-icon>file_download</mat-icon> 
+    </a>
+  </div>
+    <div *ngIf="uploadPercent">{{ uploadPercent | async }} % loaded ... </div>
 </div>

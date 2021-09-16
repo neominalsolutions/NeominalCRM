@@ -10,6 +10,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AppServiceModule } from './shared/services/app-service.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './shared/theme/material/angular-material.module';
+import { FileUploaderModule } from './shared/components/file-uploader/file-uploader.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AngularMaterialModule } from './shared/theme/material/angular-material.
     AngularFireStorageModule,
     AppServiceModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FileUploaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,7 @@ export class FileUploaderComponent implements OnInit {
 
   uploadPercent:any = null;
   downloadURL:any = null;
+  fileName:any = null;
 
 
   constructor(private uploader: FirebaseUploaderService) { 
@@ -25,6 +26,10 @@ export class FileUploaderComponent implements OnInit {
     this.uploader.onUploadPercentage.subscribe(percent => {
       console.log('percent', percent);
       this.uploadPercent = percent;
+    })
+
+    this.uploader.onFileName.subscribe(name => {
+      this.fileName = name;
     })
   }
 
